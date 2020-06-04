@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.DoctorFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivDoctor"
+                android:layout_width="0dp"
+                android:layout_height="216dp"
+                android:layout_marginTop="50dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/doctor_circle" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/actbtn_searchReserva"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/colorSuccess"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@android:drawable/ic_menu_search"
+                app:fabCustomSize="60dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv"
+                app:maxImageSize="50dp" />
+
+            <TextView
+                android:id="@+id/tv"
+                android:layout_width="0dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="60dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="Reserve en el horario de su médico de elección"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivDoctor" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</FrameLayout>

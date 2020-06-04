@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group>
+        <item
+            android:id="@+id/nav_citasAnteriores"
+            android:icon="@drawable/event_busy_24px_outlined"
+            android:title="Historial de citas"/>
+    </group>
+
+
+    <item android:title="Configuracion de cuenta">
+        <menu>
+            <item
+                android:id="@+id/nav_editarPerfil"
+                android:icon="@drawable/account_circle_24px_outlined"
+                android:title="Editar Perfil"/>
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@android:drawable/ic_lock_idle_lock"
+                android:title="Cerrar Session" />
+        </menu>
+    </item>
+</menu>
