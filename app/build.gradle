@@ -53,4 +53,8 @@ dependencies {
 
     //material design UI
     implementation 'com.google.android.material:material:1.1.0'
+
+    // yader retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.6.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.1'
 }

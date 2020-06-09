@@ -1,5 +1,6 @@
 package com.example.sonicdocv2
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -53,6 +54,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val intent: Intent = intent
+        val msgLogin = intent.getStringExtra("username")
+        Toast.makeText(this,msgLogin,Toast.LENGTH_LONG).show()
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
