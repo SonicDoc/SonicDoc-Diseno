@@ -5,8 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.sonicdocv2.R
+import com.example.sonicdocv2.adapters.ReservaAdapter
+import com.example.sonicdocv2.models.Reserva
+import com.example.sonicdocv2.network.ReservaService
+import kotlinx.android.synthetic.main.fragment_reserva.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -16,14 +25,45 @@ class ReservaFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
+
         return inflater.inflate(R.layout.fragment_reserva, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //TODO(RecyclerView)
         //initialize recyclerView
-        //load data with cargar_citas
+        btnCargar.setOnClickListener{
+            var listaReserva: ArrayList<Reserva> = ArrayList()
+            recyclerViewReserves.layoutManager = LinearLayoutManager(context)
+            recyclerViewReserves.adapter = ReservaAdapter(listaReserva)
+            // cargar reserva api
+            loadReserva()
+            //load data with cargar_citas
+        }
+    }
+
+    private fun loadReserva(){
+        val retrofit = Retrofit.Builder()
+            .baseUrl("http://yaderp.com/sonicdoc/api/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val reservaService:ReservaService
+        reservaService = retrofit.create(ReservaService::class.java)
+        val request =reservaService.getAll()
+        request.enqueue(object : Callback<List<Reserva>> {
+            override fun onFailure(call: Call<List<Reserva>>, t: Throwable) {
+                Toast.makeText(context,t.message.toString(),Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(call: Call<List<Reserva>>, response: Response<List<Reserva>>) {
+                if(response.isSuccessful){
+                    val reservas:List<Reserva> = response.body()!!
+                    recyclerViewReserves.layoutManager = LinearLayoutManager(context)
+                    recyclerViewReserves.adapter = ReservaAdapter(reservas)
+                }
+            }
+        })
     }
 
     //TODO (call API)

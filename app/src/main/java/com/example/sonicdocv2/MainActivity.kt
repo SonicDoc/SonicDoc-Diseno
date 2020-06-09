@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         val intent: Intent = intent
         val msgLogin = intent.getStringExtra("username")
-        Toast.makeText(this,msgLogin,Toast.LENGTH_LONG).show()
+        Toast.makeText(this,"Bienvenido $msgLogin",Toast.LENGTH_LONG).show()
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -75,7 +75,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         //btm_navView.selectedItemId = R.id.menu_citas
         val btm_navView: BottomNavigationView = findViewById(R.id.btm_navView)
         btm_navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
-
     }
 
     //drawer Navigation
