@@ -7,12 +7,13 @@
     tools:context=".fragments.DoctorFragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewDoctor"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <ScrollView
+    <!--ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
@@ -62,6 +63,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/ivDoctor" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    </ScrollView-->
 
 </FrameLayout>

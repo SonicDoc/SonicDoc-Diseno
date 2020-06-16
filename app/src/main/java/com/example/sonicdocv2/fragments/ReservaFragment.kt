@@ -35,8 +35,9 @@ class ReservaFragment : Fragment() {
         var listaReserva: ArrayList<Reserva> = ArrayList()
         recyclerViewReserves.layoutManager = LinearLayoutManager(context)
         recyclerViewReserves.adapter = ReservaAdapter(listaReserva)
-        listaReserva.add(Reserva(1,"Gustavo","01/01/01","02/02/02",1,1))
-        listaReserva.add(Reserva(2,"Piero","01/01/01","02/02/02",0,0))
+        for(num in 1..7){
+            listaReserva.add(Reserva(num,"Piero ${num}","01/01/01","02/02/02",0,0))
+        }
         btnCargar.setOnClickListener{
             loadReserva()
         }

@@ -7,11 +7,13 @@
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
-        android:layout_margin="3dp"
+        android:id="@+id/cardViewDoctor"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp">
 
         <RelativeLayout
+            android:id="@+id/relativeLayoutDoctor"
             android:layout_width="match_parent"
             android:layout_height="170dp"
             android:padding="10dp">
@@ -47,16 +49,6 @@
                 tools:text="nombres" />
 
             <TextView
-                android:id="@+id/Fecha"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/Nombres"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="25dp"
-                android:layout_toEndOf="@+id/imageDoctor"
-                tools:text="fecha" />
-
-            <TextView
                 android:id="@+id/Especialidad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -64,7 +56,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="25dp"
                 android:layout_toEndOf="@+id/imageDoctor"
-                tools:text="turno" />
+                tools:text="Especialidad" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

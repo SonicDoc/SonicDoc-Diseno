@@ -5,8 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.sonicdocv2.R
+import com.example.sonicdocv2.adapters.DoctorAdapter
+import com.example.sonicdocv2.models.Doctor
+import kotlinx.android.synthetic.main.fragment_doctor.*
 
 //TODO (implement recyclerview's OnItemClickListener)
 class DoctorFragment : Fragment() {
@@ -22,9 +26,12 @@ class DoctorFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //TODO(RecyclerView)
-        //initialize recyclerView
-        //load data with cargar_citas
+        var listaDoctor: ArrayList<Doctor> = ArrayList()
+        recyclerViewDoctor.layoutManager = LinearLayoutManager(context)
+        recyclerViewDoctor.adapter = DoctorAdapter(listaDoctor)
+        for(num in 1..7){
+            listaDoctor.add(Doctor(num,"Dr Tetas ${num}", "Ginecología"))
+        }
     }
 
     companion object {

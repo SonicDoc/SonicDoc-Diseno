@@ -1,11 +1,8 @@
 package com.example.sonicdocv2.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sonicdocv2.R
 import com.example.sonicdocv2.models.Reserva
@@ -26,14 +23,14 @@ class ReservaAdapter(val reservas: List<Reserva>) : RecyclerView.Adapter<Reserva
         val reserva = reservas[position]
         holder.view.Nombres.text = reserva.Nombre
         holder.view.Fecha.text = reserva.Fecha
-        holder.view.Turno.text = reserva.Turno
+        holder.view.Especialidad.text = reserva.Turno
         holder.view.textViewIsNew.visibility = if(reserva.Estado == 1) View.VISIBLE else View.INVISIBLE
 
         var img = R.drawable.hombre
         if(reserva.Estado!=1){
             img = R.drawable.mujer
         }
-        holder.view.imageUser.setImageResource(img)
+        holder.view.imageDoctor.setImageResource(img)
     }
 
     class UserViewHolder(val view: View) : RecyclerView.ViewHolder(view)
