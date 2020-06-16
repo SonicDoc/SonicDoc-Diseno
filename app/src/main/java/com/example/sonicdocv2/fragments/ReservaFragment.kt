@@ -32,13 +32,13 @@ class ReservaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //initialize recyclerView
+        var listaReserva: ArrayList<Reserva> = ArrayList()
+        recyclerViewReserves.layoutManager = LinearLayoutManager(context)
+        recyclerViewReserves.adapter = ReservaAdapter(listaReserva)
+        listaReserva.add(Reserva(1,"Gustavo","01/01/01","02/02/02",1,1))
+        listaReserva.add(Reserva(2,"Piero","01/01/01","02/02/02",0,0))
         btnCargar.setOnClickListener{
-            var listaReserva: ArrayList<Reserva> = ArrayList()
-            recyclerViewReserves.layoutManager = LinearLayoutManager(context)
-            recyclerViewReserves.adapter = ReservaAdapter(listaReserva)
-            // cargar reserva api
             loadReserva()
-            //load data with cargar_citas
         }
     }
 

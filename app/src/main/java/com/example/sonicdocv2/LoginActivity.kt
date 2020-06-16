@@ -42,9 +42,7 @@ class LoginActivity : AppCompatActivity() {
                     if(!response.body()?.Error!!){
                         var msgLogin:String?
                         msgLogin= response.body()?.Mensaje!!
-                        val intent:Intent= Intent(this@LoginActivity, MainActivity::class.java)
-                        intent.putExtra("username", msgLogin)
-                        startActivity(intent)
+                        goToMain(msgLogin)
                     }else{
                         textMessaje.text = response.body()?.Mensaje!!
                     }
@@ -52,5 +50,13 @@ class LoginActivity : AppCompatActivity() {
                 }
             })
         }
+        btnSkip.setOnClickListener{
+            goToMain("No Registrado")
+        }
+    }
+    fun goToMain(msgLogin:String){
+        val intent:Intent= Intent(this@LoginActivity, MainActivity::class.java)
+        intent.putExtra("username", msgLogin)
+        startActivity(intent)
     }
 }
