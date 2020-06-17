@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.sonicdocv2.R
+import com.example.sonicdocv2.adapters.OnReservaClickListener
 import com.example.sonicdocv2.adapters.ReservaAdapter
 import com.example.sonicdocv2.models.Reserva
 import com.example.sonicdocv2.network.ReservaService
@@ -19,8 +20,12 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-//TODO (implement recyclerview's OnItemClickListener)
-class ReservaFragment : Fragment() {
+class ReservaFragment : Fragment(), OnReservaClickListener {
+
+    private val TAG = "ReservaFragment"
+    //lateinit var reservas : ArrayList<Reserva>
+    //lateinit var listaReserva : List<Reserva>
+    lateinit var reservaAdapter: ReservaAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -33,8 +38,10 @@ class ReservaFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //initialize recyclerView
         var listaReserva: ArrayList<Reserva> = ArrayList()
+        reservaAdapter = ReservaAdapter(listaReserva, this)
+        recyclerViewReserves.adapter = reservaAdapter
         recyclerViewReserves.layoutManager = LinearLayoutManager(context)
-        recyclerViewReserves.adapter = ReservaAdapter(listaReserva)
+
         for(num in 1..7){
             listaReserva.add(Reserva(num,"Piero ${num}","01/01/01","02/02/02",0,0))
         }
@@ -60,8 +67,9 @@ class ReservaFragment : Fragment() {
             override fun onResponse(call: Call<List<Reserva>>, response: Response<List<Reserva>>) {
                 if(response.isSuccessful){
                     val reservas:List<Reserva> = response.body()!!
+                    reservaAdapter = ReservaAdapter(reservas, this@ReservaFragment)
+                    recyclerViewReserves.adapter = reservaAdapter
                     recyclerViewReserves.layoutManager = LinearLayoutManager(context)
-                    recyclerViewReserves.adapter = ReservaAdapter(reservas)
                 }
             }
         })
@@ -80,11 +88,15 @@ class ReservaFragment : Fragment() {
          * Use this factory method to create a new instance of
          * this fragment
          */
-
         @JvmStatic
         fun newInstance() =
             ReservaFragment().apply {
                 //return ReservaFragment()
             }
+    }
+
+    //TODO qué hacer con el dato del click
+    override fun onItemClicked(reserva: Reserva) {
+        TODO("Not yet implemented")
     }
 }

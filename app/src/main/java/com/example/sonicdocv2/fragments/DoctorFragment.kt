@@ -9,14 +9,19 @@ import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.sonicdocv2.R
 import com.example.sonicdocv2.adapters.DoctorAdapter
+import com.example.sonicdocv2.adapters.OnDoctorClickListener
 import com.example.sonicdocv2.models.Doctor
 import kotlinx.android.synthetic.main.fragment_doctor.*
 
-//TODO (implement recyclerview's OnItemClickListener)
-class DoctorFragment : Fragment() {
-    // TODO: Rename and change types of parameters
+class DoctorFragment : Fragment(), OnDoctorClickListener  {
+    // TODO: Rename or Delete types of and its parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    private val TAG = "DoctorFragment"
+    //lateinit var doctores : ArrayList<Doctor>
+    //lateinit var listaDoctor : List<Doctor>
+    lateinit var doctorAdapter: DoctorAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -27,8 +32,9 @@ class DoctorFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var listaDoctor: ArrayList<Doctor> = ArrayList()
+        doctorAdapter = DoctorAdapter(listaDoctor, this)
+        recyclerViewDoctor.adapter = doctorAdapter
         recyclerViewDoctor.layoutManager = LinearLayoutManager(context)
-        recyclerViewDoctor.adapter = DoctorAdapter(listaDoctor)
         for(num in 1..7){
             listaDoctor.add(Doctor(num,"Dr Tetas ${num}", "Ginecología"))
         }
@@ -44,5 +50,10 @@ class DoctorFragment : Fragment() {
             DoctorFragment().apply {
                 //return DoctorFragment()
             }
+    }
+
+    //TODO qué hacer con el dato del click
+    override fun onItemClicked(doctor: Doctor) {
+        TODO("Not yet implemented")
     }
 }

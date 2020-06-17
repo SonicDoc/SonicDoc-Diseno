@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             .commit() > 0
     }
 
+    //btm Navigation destination
     private fun getFragmentFor(item: MenuItem): Fragment {
         return when(item.itemId) {
             R.id.menu_citas -> ReservaFragment()
